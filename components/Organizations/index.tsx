@@ -1,7 +1,14 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { useAtom } from "jotai";
 import { orgsAtom } from "../../store/atoms";
+import { router } from "expo-router";
 
 function OrganizationCard({ orgData }: any) {
   const [, setNgoState] = useAtom(orgsAtom);
@@ -9,19 +16,26 @@ function OrganizationCard({ orgData }: any) {
   const handleClick = () => {
     setNgoState((prev) => ({ ...prev, currentNGO: orgData.id }));
     // Navigate to organization page logic here.
+    router.push(`/orgs/${orgData.id}`);
   };
 
   return (
     <TouchableOpacity
       onPress={handleClick}
-      className="p-5 my-3 mr-2 bg-white rounded-md shadow-md"
+      className="my-3 mr-2 overflow-hidden rounded-md shadow-md"
     >
-      <Image
-        source={{ uri: orgData.image }}
-        className="w-12 h-12 rounded-full"
-      />
-      <Text className="mt-2 text-xl font-bold">{orgData.name}</Text>
-      <Text className="mt-1 text-sm text-gray-800">{orgData.description}</Text>
+      <ImageBackground
+        source={{ uri: "https://picsum.photos/300/200" }}
+        style={{ width: "100%", height: 200 }}
+        resizeMode="cover"
+      >
+        <View className="flex flex-col justify-end h-full p-5 ">
+          <Text className="text-xl font-bold text-white">{orgData.name}</Text>
+          <Text className="mt-1 text-sm text-gray-300">
+            {orgData.description}
+          </Text>
+        </View>
+      </ImageBackground>
     </TouchableOpacity>
   );
 }

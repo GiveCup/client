@@ -56,6 +56,7 @@ export default function TabLayout() {
         name="leaderboard"
         options={{
           title: "Leaderboard",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="trophy" color={color} />,
         }}
       />

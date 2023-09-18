@@ -5,6 +5,7 @@ import { useAtom } from "jotai";
 import { orgsAtom } from "../../store/atoms";
 import OrganizationCard from "../../components/Organizations";
 import { groupBy } from "../../utils/groupBy";
+import CallToActionCard from "../../components/Cards/CallToActionCard";
 
 function MainScreen() {
   const [orgs, setOrgs] = useAtom(orgsAtom);
@@ -19,6 +20,7 @@ function MainScreen() {
 
   return (
     <ScrollView style={{ flex: 1 }} className="px-5 bg-gray-100 py-7">
+      <CallToActionCard />
       {Object.entries(groupedOrgs).map(([type, orgsList]: any) => (
         <View key={type} className="mb-4">
           <Text className="text-xl font-semibold ">
