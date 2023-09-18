@@ -3,34 +3,31 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import XPortalScreen from "../../components/XPortalScreen";
+import Header from "../../components/Header";
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
+  const userData = {
+    avatar: "https://picsum.photos/200",
+    name: "@johndoe",
+    level: "Gold",
+  };
+
+  const handleLeftPress = () => {
+    // Navigate to the menu or perform any other action
+  };
+
+  const handleNotificationPress = () => {
+    // Handle notification press logic here
+  };
+
   return (
-    <View style={styles.container}>
-      {/* <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      /> */}
-      {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
-      <XPortalScreen />
+    <View className="flex-1">
+      <Header
+        user={userData}
+        onLeftPress={handleLeftPress}
+        onNotificationPress={handleNotificationPress}
+      />
+      {/* Other home screen content goes here */}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
