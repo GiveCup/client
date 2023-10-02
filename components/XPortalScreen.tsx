@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { XPortal, XPortalLogin, XPortalLogout } from "react-native-xportal";
 import UserData from "./UserData";
+import { router } from "expo-router";
 
 const XPortalScreen = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -55,7 +56,8 @@ const XPortalScreen = () => {
       ) : (
         <>
           {/* {isInitialized && <XPortalLogout style={{ marginTop: 20 }} />} */}
-          {isInitialized && <UserData />}
+          {/* {isInitialized && <UserData />} */}
+          { isInitialized && router.replace("/(tabs)") }
         </>
       )}
     </View>

@@ -61,7 +61,7 @@ const UserData: React.FC = () => {
             EGLD Balance: {Number(balance) / 10 ** 18}
           </Text>
 
-          <XPortalLogout className="w-full" />
+          <XPortalLogout />
         </View>
 
         <View className="p-5 my-4 bg-white rounded-md shadow-md">
