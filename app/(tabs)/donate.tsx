@@ -14,12 +14,10 @@ function MainScreen() {
     setOrgs((prev: any) => ({ ...prev, orgs: OrgsData }));
   }, []);
 
-  console.log("orgs", orgs);
-
   const groupedOrgs = groupBy(orgs.orgs, "type");
 
   return (
-    <ScrollView style={{ flex: 1 }} className="px-5 bg-gray-100 py-7">
+    <ScrollView className="flex-1 px-5 bg-gray-100 py-7">
       <CallToActionCard />
       {Object.entries(groupedOrgs).map(([type, orgsList]: any) => (
         <View key={type} className="mb-4">

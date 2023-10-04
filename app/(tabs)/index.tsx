@@ -10,7 +10,7 @@ export default function HomeScreen() {
   const router = useRouter();
 
   return (
-    <View className="flex-1">
+    <View className="flex-1 bg-gray-100 mt-10">
       <Header />
       {/* Other home screen content goes here */}
     </View>

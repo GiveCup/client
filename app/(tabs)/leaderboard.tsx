@@ -5,7 +5,7 @@ import Header from "../../components/Header";
 
 const Leaderboard: React.FC = () => {
   return (
-    <View>
+    <View className="flex-1 bg-gray-100 mt-10">
       <Header />
       <View className="p-4 mt-4">
         <Text className="mb-4 text-2xl font-bold">Leaderboard</Text>

@@ -21,6 +21,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarShowLabel: false
       }}
     >
       <Tabs.Screen
@@ -28,21 +29,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />
         }}
       />
       <Tabs.Screen
@@ -53,6 +40,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="notifications"
+        options={{
+          title: "Notifications",
+          tabBarIcon: ({ color }) => <TabBarIcon name="feed" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="leaderboard"
         options={{
           title: "Leaderboard",
@@ -60,13 +54,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="trophy" color={color} />,
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
-      />
+      /> */}
     </Tabs>
   );
 }
