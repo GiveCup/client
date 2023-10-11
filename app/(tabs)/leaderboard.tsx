@@ -4,9 +4,17 @@ import { leaderboardData } from "../../data/orgs";
 import Header from "../../components/Header";
 
 const Leaderboard: React.FC = () => {
+  const user = {
+    avatar: "https://picsum.photos/2000",
+    name: "@johndoe",
+    level: 28,
+    xp: 150,
+    orgs: 5,
+  };
+
   return (
-    <View className="flex-1 bg-gray-100 mt-10">
-      <Header />
+    <View className="flex-1 bg-[#02100E] pt-10">
+      <Header avatar={user.avatar} name={user.name} level={user.level} xp={user.xp} />
       <View className="p-4 mt-4">
         <Text className="mb-4 text-2xl font-bold">Leaderboard</Text>
         {leaderboardData.map((user) => (
@@ -21,13 +29,13 @@ const Leaderboard: React.FC = () => {
             />
             <Text className="flex-1">{user.username}</Text>
             <Text className="mr-2 font-bold">{user.xp} XP</Text>
-            <Text
+            {/* <Text
               className={
                 user.trend === "up" ? "text-green-500" : "text-red-500"
               }
             >
               {user.trend === "up" ? "🔼" : "🔽"}
-            </Text>
+            </Text> */}
           </View>
         ))}
       </View>

@@ -9,11 +9,11 @@ const CallToActionCard: React.FC = () => {
         style={{ width: "100%", height: 200 }}
         resizeMode="cover"
       >
-        <View className="flex flex-col justify-center h-full px-6 bg-gray-600 bg-opacity-30">
-          <Text className="mb-3 text-xl font-extrabold text-white">
+        <View className="flex flex-col justify-center h-full px-6 bg-gray-200 bg-opacity-30">
+          <Text className="mb-3 text-xl font-extrabold text-black">
             Contribute to causes and win NFTs.
           </Text>
-          <Text className="text-sm text-gray-300">
+          <Text className="text-sm text-gray-600">
             Earn Item Packs NFTs for each contribution you make. Open them and
             earn brand new items you can trade and use.
           </Text>

@@ -1,7 +1,9 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Touchable } from "react-native";
 import React from "react";
 import { router, useLocalSearchParams } from "expo-router";
 import { OrgsData } from "../../data/orgs";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 interface OrganizationProps {
   orgData: any;
@@ -15,7 +17,13 @@ const Organization = () => {
     return org.id === id;
   })[0];
   return (
-    <View className="flex flex-col items-center p-4 bg-gray-100">
+    <View className="flex flex-col items-center p-4 bg-[#02100E]">
+      <TouchableOpacity
+        onPress={ () => router.back() }
+        className="p-4"
+      >
+        <FontAwesome size={24} style={{ marginBottom: -3 }} name="arrow-left" color={"white"}/>
+      </TouchableOpacity>
       <View className="w-full max-w-md p-5 my-4 bg-white rounded-md shadow-md">
         <Image
           source={{ uri: image }}

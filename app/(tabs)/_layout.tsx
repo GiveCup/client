@@ -3,6 +3,7 @@ import { Link, Tabs } from "expo-router";
 import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "../../constants/Colors";
+import { View } from "../../components/Themed";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -21,6 +22,8 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveBackgroundColor: "#02100e",
+        tabBarInactiveBackgroundColor: "#02100e",
         tabBarShowLabel: false
       }}
     >
@@ -36,6 +39,13 @@ export default function TabLayout() {
         name="donate"
         options={{
           title: "Donate",
+          headerTitleStyle: {
+            color: '#ffffff',
+          },
+          headerBackgroundContainerStyle: {
+            backgroundColor: '#02100e',
+          },
+          headerBackground: () => <View></View>,
           tabBarIcon: ({ color }) => <TabBarIcon name="money" color={color} />,
         }}
       />
@@ -43,6 +53,13 @@ export default function TabLayout() {
         name="notifications"
         options={{
           title: "Notifications",
+          headerTitleStyle: {
+            color: '#ffffff',
+          },
+          headerBackgroundContainerStyle: {
+            backgroundColor: '#02100e',
+          },
+          headerBackground: () => <View></View>,
           tabBarIcon: ({ color }) => <TabBarIcon name="feed" color={color} />,
         }}
       />

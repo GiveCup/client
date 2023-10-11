@@ -1,9 +1,17 @@
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { router } from "expo-router";
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 const MenuScreen: React.FC = () => {
   return (
-    <View className="flex flex-col h-full p-4 bg-gray-100">
+    <View className="flex flex-col h-full p-4 bg-[#02100E]">
+      <TouchableOpacity
+        onPress={ () => router.back() }
+        className="p-4"
+      >
+        <FontAwesome size={24} style={{ marginBottom: -3 }} name="arrow-left" color={"white"}/>
+      </TouchableOpacity>
       <TouchableOpacity className="p-4 my-2 bg-white rounded shadow">
         <Text className="text-lg">Home</Text>
       </TouchableOpacity>

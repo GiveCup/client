@@ -5,8 +5,11 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import { router } from "expo-router";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import { TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { useColorScheme } from "react-native";
 
 export {
@@ -53,7 +56,8 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+        <Stack.Screen name="orgs/[id]" options={{ headerShown: false}}/>
+        <Stack.Screen name="menu" options={{headerShown: false}} />
       </Stack>
     </ThemeProvider>
   );
