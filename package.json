@@ -16,6 +16,7 @@
     "@expo-google-fonts/unica-one": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "^6.0.2",
+    "@supabase/supabase-js": "^2.38.1",
     "expo": "~49.0.10",
     "expo-font": "~11.4.0",
     "expo-linking": "~5.0.2",
