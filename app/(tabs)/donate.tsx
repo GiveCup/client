@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, View, Text } from "react-native";
-import { OrgsData } from "../../data/orgs";
+import supabase from "../../services/supabase"; // Adjust the path to where your Supabase client is initialized
 import { useAtom } from "jotai";
 import { orgsAtom } from "../../store/atoms";
 import OrganizationCard from "../../components/Organizations";
 import { groupBy } from "../../utils/groupBy";
 import CallToActionCard from "../../components/Cards/CallToActionCard";
+import useOrganizations from "../../hooks/useOrganizations";
 
 function MainScreen() {
-  const [orgs, setOrgs] = useAtom(orgsAtom);
+  const { orgs, loading, error } = useOrganizations();
 
-  React.useEffect(() => {
-    setOrgs((prev: any) => ({ ...prev, orgs: OrgsData }));
-  }, []);
+  if (loading) {
+    return <Text>Loading...</Text>; // Or any other loading state representation you prefer
+  }
 
-  const groupedOrgs = groupBy(orgs.orgs, "type");
+  if (error || !orgs) {
+    return <Text>Error fetching data!</Text>;
+  }
+
+  const groupedOrgs = groupBy(orgs, "category");
 
   return (
     <ScrollView className="flex-1 px-5 bg-[#02100E] py-7">
       {/* <CallToActionCard /> */}
-      {Object.entries(groupedOrgs).map(([type, orgsList]: any) => (
-        <View key={type} className="mb-4">
-          <Text className="text-white text-xl font-semibold ">
-            {type.charAt(0).toUpperCase() + type.slice(1)}
+      {Object.entries(groupedOrgs).map(([category, orgsList]: any) => (
+        <View key={category} className="mb-4">
+          <Text className="text-xl font-semibold text-white ">
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {orgsList.map((org: any) => (

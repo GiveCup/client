@@ -15,23 +15,27 @@ function OrganizationCard({ orgData }: any) {
 
   const handleClick = () => {
     setNgoState((prev) => ({ ...prev, currentNGO: orgData.id }));
-    // Navigate to organization page logic here.
     router.push(`/orgs/${orgData.id}`);
   };
 
   return (
     <TouchableOpacity
       onPress={handleClick}
-      className="my-3 mr-2 overflow-hidden rounded-md shadow-md"
+      className="my-3 mr-2 overflow-hidden rounded-md shadow-md w-72 h-60"
     >
       <ImageBackground
         source={{ uri: "https://picsum.photos/300/200" }}
-        className="w-full h-60"
+        className="w-full h-full"
         resizeMode="cover"
       >
-        <View className="flex flex-col justify-end h-full p-5 ">
-          <Text className="text-xl font-bold text-white">{orgData.name}</Text>
-          <Text className="mt-1 text-sm text-gray-300">
+        <View className="flex flex-col justify-end h-full p-5">
+          <Text className="text-xl font-bold text-white truncate">
+            {orgData.name}
+          </Text>
+          <Text
+            numberOfLines={2}
+            className="mt-1 text-sm text-gray-300 truncate"
+          >
             {orgData.description}
           </Text>
         </View>
