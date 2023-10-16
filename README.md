@@ -23,7 +23,7 @@ coming soon
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-github-username/givecup.git
+git clone https://github.com/GiveCup/givecup.git
 cd givecup
 ```
 ### Install Dependencies
