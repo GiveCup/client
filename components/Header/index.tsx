@@ -10,12 +10,7 @@ interface UserProps {
   level: string;
 }
 
-const Header = () => {
-  const user = {
-    avatar: "https://picsum.photos/200",
-    name: "@johndoe",
-    level: "Gold",
-  };
+const Header = (user: { avatar: string; name: string; level: number; xp: number; }) => {
 
   const handleLeftPress = () => {
     // Navigate to the menu or perform any other action
@@ -23,20 +18,23 @@ const Header = () => {
   };
 
   return (
-    <View className="flex-row items-center justify-between p-4 bg-gray-200">
+    <View className="flex-row items-center justify-between px-12 pt-8 pb-4 bg-[#02100E]">
       <TouchableOpacity
         onPress={handleLeftPress}
         className="flex-row items-center flex-1"
       >
-        <Image
+        {/* <Image
           source={{ uri: user.avatar }}
           className="w-16 h-16 mr-3 rounded-full"
-        />
+        /> */}
         <View
         className="flex-1 flex-col items-left">
-          <Text className="font-semibold text-3xl text-center">{user.name}</Text>
-          <Text className="text-base text-gray-700">Level: {user.level}</Text>
-          <View><Progress.Bar progress={0.7} width={null}/></View>
+          <Text className="font-semibold text-white text-3xl text-center">{user.name}</Text>
+          <View className="flex-grow flex-row">
+            <Text className="flex-1 text-base text-white justify-start">Level: {user.level}</Text>
+            <Text className="text-base text-white justify-end">{user.xp} / {user.level*10}</Text>
+          </View>
+          <View><Progress.Bar progress={user.xp/(user.level*10)} width={null} height={24}/></View>
         </View>
       </TouchableOpacity>
     </View>

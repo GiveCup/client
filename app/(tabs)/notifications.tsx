@@ -3,7 +3,7 @@ import React from "react";
 
 const Notifications = () => {
   return (
-    <ScrollView className="flex-1 px-5 bg-gray-100 py-7">
+    <ScrollView className="flex-1 px-5 bg-[#02100E] py-7">
       <View className="flex-1 flex-col bg-gray-200 rounded-3xl p-4">
         <View className="flex-1 flex-row pb-5">
           <Image

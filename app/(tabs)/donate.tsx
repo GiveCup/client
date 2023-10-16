@@ -17,11 +17,11 @@ function MainScreen() {
   const groupedOrgs = groupBy(orgs.orgs, "type");
 
   return (
-    <ScrollView className="flex-1 px-5 bg-gray-100 py-7">
-      <CallToActionCard />
+    <ScrollView className="flex-1 px-5 bg-[#02100E] py-7">
+      {/* <CallToActionCard /> */}
       {Object.entries(groupedOrgs).map(([type, orgsList]: any) => (
         <View key={type} className="mb-4">
-          <Text className="text-xl font-semibold ">
+          <Text className="text-white text-xl font-semibold ">
             {type.charAt(0).toUpperCase() + type.slice(1)}
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>

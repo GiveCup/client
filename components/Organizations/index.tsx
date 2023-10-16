@@ -26,7 +26,7 @@ function OrganizationCard({ orgData }: any) {
     >
       <ImageBackground
         source={{ uri: "https://picsum.photos/300/200" }}
-        style={{ width: "100%", height: 200 }}
+        className="w-full h-60"
         resizeMode="cover"
       >
         <View className="flex flex-col justify-end h-full p-5 ">

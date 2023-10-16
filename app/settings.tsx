@@ -5,7 +5,7 @@ const SettingsScreen: React.FC = () => {
   const [darkMode, setDarkMode] = React.useState(false);
 
   return (
-    <ScrollView className="flex flex-col h-full p-4 bg-gray-100">
+    <ScrollView className="flex flex-col h-full p-4 bg-[#02100E]">
       <Text>Settings</Text>
     </ScrollView>
   );
