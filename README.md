@@ -1,11 +1,23 @@
 # GiveCup: Building Communities Around Causes 🌍
 **A gamified web3 based mobile app that makes donations secure, transparent, and rewarding.**
 
-## 📜 About
-GiveCup revolutionizes the way charitable donations are made, by integrating the benefits of the blockchain, gamification, and community-building. Developed by a trio of high school students & Web3 enthusiasts for [XDay /hackathon](https://xday.com/hackathon), GiveCup aims to ensure every donation counts, while providing a rewarding and engaging user experience.
-
 ## 🖼 Preview
 ![App preview](preview.png)
+
+## Table of Contents
+- [About](#-about)
+- [Preview](#-preview)
+- [Features](#-features)
+- [Getting Started](#-getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Clone the Repository](#clone-the-repository)
+  * [Install Dependencies](#install-dependencies)
+  * [Environment Variables](#environment-variables)
+  * [Usage](#-usage)
+  * [Customizing & Contributing](#customizing--contributing)
+
+## 📜 About
+GiveCup revolutionizes the way charitable donations are made, by integrating the benefits of the blockchain, gamification, and community-building. Developed by a trio of high school students & Web3 enthusiasts for [XDay /hackathon](https://xday.com/hackathon), GiveCup aims to ensure every donation counts, while providing a rewarding and engaging user experience.
 
 ## 🚀 Features
 - **Gamified Giving**: Transform your charitable donations into a game-like experience. Donate, level up, and unlock unique rewards.
@@ -36,6 +48,15 @@ or using yarn:
 ```bash
 yarn
 ```
+
+### Environment Variables
+Before running the app, make sure to set up the necessary environment variables. Create a `.env` file in the root directory of your project and add the following:
+
+```env
+EXPO_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_URL
+EXPO_PUBLIC_SUPABASE_ANON_KEY=YOUR_ANON_KEY
+```
+Replace YOUR_SUPABASE_URL and YOUR_ANON_KEY with the appropriate values.
 
 ## 📖 Usage
 Running the project
