@@ -10,7 +10,7 @@ export const createDonationTransaction = async ({
     const data = {
       transactions: [
         {
-          value: 0,
+          value: '0',
           receiver: DONATION_ADDRESS,
           sender: senderAddress,
           gasPrice: 1000000000,
@@ -21,7 +21,7 @@ export const createDonationTransaction = async ({
           version: 1,
         },
       ],
-      // minGasLimit: 50_000 (optional)
+      //minGasLimit: 50_000 (optional)
     };
 
     const transactions = await XPortal.signTransactions(data);

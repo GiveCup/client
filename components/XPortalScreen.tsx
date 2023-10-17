@@ -4,15 +4,12 @@ import { XPortal, XPortalLogin, XPortalLogout } from "react-native-xportal";
 import UserData from "./UserData";
 import supabase from "../services/supabase";
 import { router } from "expo-router";
-import loginImage from "../assets/images/login.png";
 import { useAtom } from "jotai";
 import { isConnectedAtom, isInitializedAtom } from "../store/atoms";
 
 const XPortalScreen = () => {
   const [isInitialized, setIsInitialized] = useAtom(isInitializedAtom);
   const [isConnected, setIsConnected] = useAtom(isConnectedAtom);
-
-  console.log("isInitialized", isInitialized);
 
   return !isConnected ? (
     <View className="bg-[#02100E] w-full h-full p-10 flex items-center justify-center">
@@ -22,7 +19,7 @@ const XPortalScreen = () => {
       <Text className="mb-10 text-2xl font-bold text-white">GIVECUP</Text>
 
       <Image
-        source={loginImage}
+        source={require("../assets/images/login.png")}
         className="w-64 h-64 mb-10" // Adjust the width and height values accordingly
       />
       <Text>Connect with xPortal</Text>
