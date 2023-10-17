@@ -1,5 +1,7 @@
 import { useState } from "react";
+import * as Font from "expo-font";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import AppLoading from "expo-app-loading";
 import {
   DarkTheme,
   DefaultTheme,
@@ -9,8 +11,6 @@ import { useFonts } from "expo-font";
 import { router } from "expo-router";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
-import { TouchableOpacity } from "react-native";
-import { View } from "react-native";
 import { useColorScheme } from "react-native";
 export {
   // Catch any errors thrown by the Layout component.
@@ -51,6 +51,21 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        "UnicaOne-Regular": require("../assets/fonts/UnicaOne-Regular.ttf"),
+      });
+      setFontLoaded(true);
+    }
+    loadFonts();
+  }, []);
+
+  if (!fontLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
