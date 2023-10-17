@@ -1,9 +1,6 @@
 # GiveCup: Building Communities Around Causes 🌍
 **A gamified web3 based mobile app that makes donations secure, transparent, and rewarding.**
 
-## 🖼 Preview
-![App preview](preview.png)
-
 ## Table of Contents
 - [About](#-about)
 - [Preview](#-preview)
@@ -15,6 +12,9 @@
   * [Environment Variables](#environment-variables)
   * [Usage](#-usage)
   * [Customizing & Contributing](#customizing--contributing)
+
+## 🖼 Preview
+![App preview](preview.png)
 
 ## 📜 About
 GiveCup revolutionizes the way charitable donations are made, by integrating the benefits of the blockchain, gamification, and community-building. Developed by a trio of high school students & Web3 enthusiasts for [XDay /hackathon](https://xday.com/hackathon), GiveCup aims to ensure every donation counts, while providing a rewarding and engaging user experience.
