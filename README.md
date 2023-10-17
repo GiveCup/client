@@ -5,7 +5,7 @@
 GiveCup revolutionizes the way charitable donations are made, by integrating the benefits of the blockchain, gamification, and community-building. Developed by a trio of high school students & Web3 enthusiasts for [XDay /hackathon](https://xday.com/hackathon), GiveCup aims to ensure every donation counts, while providing a rewarding and engaging user experience.
 
 ## 🖼 Preview
-coming soon
+![App preview](preview.png)
 
 ## 🚀 Features
 - **Gamified Giving**: Transform your charitable donations into a game-like experience. Donate, level up, and unlock unique rewards.
