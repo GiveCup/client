@@ -28,12 +28,12 @@ export default function HomeScreen() {
 
   const onPressInv = () => {
     // Navigate to the inv
-    router.push("/menu");
+    router.push("/inv");
   };
 
   const onPressMarket = () => {
     // Navigate to the market
-    router.push("/menu");
+    router.push("/marketplace");
   };
 
   return (
@@ -49,24 +49,9 @@ export default function HomeScreen() {
       <View className="m-4 bg-transparent">
         <Image
           source={{ uri: user.avatar }}
-          className="w-24 mr-3 rounded-full aspect-square "
+          className="w-full mr-3 rounded-full aspect-square "
         />
       </View>
-
-      <Button
-        title="Send TX"
-        onPress={async () => {
-          try {
-            await createDonationTransaction({
-              senderAddress:
-                "erd1ju59m5rcrulg0h87ysed5acrz08xa4pkzts0hrzy2lau3ak3ne0sauhxgx",
-            });
-          } catch (e) {
-            console.log("Error", e);
-          }
-        }}
-        accessibilityLabel="Send TX"
-      />
 
       <Header
         avatar={user.avatar}
@@ -74,7 +59,7 @@ export default function HomeScreen() {
         level={user.level}
         xp={user.xp}
       />
-      <Text className="mx-12 mt-2 mb-2 text-xl text-white">
+      <Text className="mx-12 mt-2 mb-2 text-2xl text-white">
         Orgs: {user.orgs}
       </Text>
       <View className="flex-row flex-grow mt-6 bg-transparent">
@@ -93,6 +78,21 @@ export default function HomeScreen() {
           />
         </View>
       </View>
+      <Button
+        title="Send TX"
+        onPress={async () => {
+          try {
+            await createDonationTransaction({
+              senderAddress:
+                "erd1ju59m5rcrulg0h87ysed5acrz08xa4pkzts0hrzy2lau3ak3ne0sauhxgx",
+            });
+          } catch (e) {
+            console.log("Error", e);
+          }
+        }}
+        accessibilityLabel="Send TX"
+      />
+
     </View>
   );
 }

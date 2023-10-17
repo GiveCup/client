@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        unica: ["UnicaOne-Regular", "sans"],
+        unica: ["UnicaOne"],
       },
     },
   },

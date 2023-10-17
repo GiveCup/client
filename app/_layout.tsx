@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as Font from "expo-font";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import AppLoading from "expo-app-loading";
+import AppLoading from "expo-splash-screen";
 import {
   DarkTheme,
   DefaultTheme,
@@ -28,6 +28,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    UnicaOne: require("../assets/fonts/UnicaOne-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -51,21 +52,6 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  useEffect(() => {
-    async function loadFonts() {
-      await Font.loadAsync({
-        "UnicaOne-Regular": require("../assets/fonts/UnicaOne-Regular.ttf"),
-      });
-      setFontLoaded(true);
-    }
-    loadFonts();
-  }, []);
-
-  if (!fontLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -74,6 +60,8 @@ function RootLayoutNav() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="orgs/[id]" options={{ headerShown: false }} />
         <Stack.Screen name="menu" options={{ headerShown: false }} />
+        <Stack.Screen name="inv" options={{ headerShown: false }} />
+        <Stack.Screen name="marketplace" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
