@@ -4,6 +4,7 @@ import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "../../constants/Colors";
 import { View } from "../../components/Themed";
+import { XPortal } from "react-native-xportal";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -24,40 +25,28 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         tabBarActiveBackgroundColor: "#02100e",
         tabBarInactiveBackgroundColor: "#02100e",
-        tabBarShowLabel: false
+        tabBarShowLabel: false,
       }}
     >
+      {/* Conditional rendering based on connection status */}
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="donate"
-        options={{
-          title: "Donate",
-          headerTitleStyle: {
-            color: '#ffffff',
-          },
-          headerBackgroundContainerStyle: {
-            backgroundColor: '#02100e',
-          },
-          headerBackground: () => <View></View>,
-          tabBarIcon: ({ color }) => <TabBarIcon name="money" color={color} />,
-        }}
-      />
+
       <Tabs.Screen
         name="notifications"
         options={{
           title: "Notifications",
           headerTitleStyle: {
-            color: '#ffffff',
+            color: "#ffffff",
           },
           headerBackgroundContainerStyle: {
-            backgroundColor: '#02100e',
+            backgroundColor: "#02100e",
           },
           headerBackground: () => <View></View>,
           tabBarIcon: ({ color }) => <TabBarIcon name="feed" color={color} />,
@@ -69,6 +58,20 @@ export default function TabLayout() {
           title: "Leaderboard",
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="trophy" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="donate"
+        options={{
+          title: "Donate",
+          headerTitleStyle: {
+            color: "#ffffff",
+          },
+          headerBackgroundContainerStyle: {
+            backgroundColor: "#02100e",
+          },
+          headerBackground: () => <View></View>,
+          tabBarIcon: ({ color }) => <TabBarIcon name="money" color={color} />,
         }}
       />
       {/* <Tabs.Screen

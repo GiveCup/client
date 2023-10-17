@@ -1,64 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, Image } from "react-native";
 import { XPortal, XPortalLogin, XPortalLogout } from "react-native-xportal";
 import UserData from "./UserData";
+import supabase from "../services/supabase";
+import { router } from "expo-router";
+import loginImage from "../assets/images/login.png";
+import { useAtom } from "jotai";
+import { isConnectedAtom, isInitializedAtom } from "../store/atoms";
 
 const XPortalScreen = () => {
-  const [isConnected, setIsConnected] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [isInitialized, setIsInitialized] = useAtom(isInitializedAtom);
+  const [isConnected, setIsConnected] = useAtom(isConnectedAtom);
 
-  useEffect(() => {
-    initializeXPortal();
-  }, []);
+  console.log("isInitialized", isInitialized);
 
-  const initializeXPortal = async () => {
-    const callbacks = {
-      onClientLogin: async () => {
-        console.log("Logged in");
-        setIsConnected(true);
-      },
-      onClientLogout: async () => {
-        console.log("Logged out");
-        setIsConnected(false);
-      },
-      onClientEvent: async (event: any) => {
-        console.log("event -> ", event);
-      },
-    };
+  return !isConnected ? (
+    <View className="bg-[#02100E] w-full h-full p-10 flex items-center justify-center">
+      <Text className="mb-2 text-xl font-bold text-white">
+        Make your cup count
+      </Text>
+      <Text className="mb-10 text-2xl font-bold text-white">GIVECUP</Text>
 
-    try {
-      await XPortal.initialize({
-        chainId: "d", // Update this with your chain ID
-        projectId: "3c6a41c249830b2c2e25cafe4796e62b", // Get from https://cloud.walletconnect.com/app
-        metadata: {
-          description: "Connect with X",
-          url: "https://AltruAvatars.io",
-          icons: ["<https://img.com/linkToIcon.png>"],
-          name: "AltruAvatars",
-        },
-        callbacks,
-      });
-
-      setIsInitialized(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <View className="text-red">
-      {!isConnected ? (
-        <>
-          <Text>Connect with xPortal</Text>
-          <XPortalLogin />
-        </>
-      ) : (
-        <>
-          {/* {isInitialized && <XPortalLogout style={{ marginTop: 20 }} />} */}
-          {isInitialized && <UserData />}
-        </>
-      )}
+      <Image
+        source={loginImage}
+        className="w-64 h-64 mb-10" // Adjust the width and height values accordingly
+      />
+      <Text>Connect with xPortal</Text>
+      <XPortalLogin />
     </View>
+  ) : (
+    <>
+      {/* {isInitialized && <XPortalLogout style={{ marginTop: 20 }} />} */}
+      {/* {isInitialized && <UserData />} */}
+
+      {isInitialized && router.replace("/(tabs)")}
+    </>
   );
 };
 

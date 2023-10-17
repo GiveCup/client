@@ -8,6 +8,8 @@ import { useRouter } from "expo-router";
 import { Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Button } from "react-native";
+import { XPortal, XPortalLogout } from "react-native-xportal";
+import { createDonationTransaction } from "../../services/multiversx";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -18,7 +20,6 @@ export default function HomeScreen() {
     xp: 150,
     orgs: 5,
   };
-
 
   const handleLeftPress = () => {
     // Navigate to the menu or perform any other action
@@ -37,29 +38,54 @@ export default function HomeScreen() {
 
   return (
     <View className="flex-1 bg-[#02100E] pt-10">
-      <TouchableOpacity
-        onPress={handleLeftPress}
-        className="pl-4"
-      >
-        <FontAwesome size={24} style={{ marginBottom: -3 }} name="bars" color={"white"}/>
+      <TouchableOpacity onPress={handleLeftPress} className="pl-4">
+        <FontAwesome
+          size={24}
+          style={{ marginBottom: -3 }}
+          name="bars"
+          color={"white"}
+        />
       </TouchableOpacity>
       <View className="m-4 bg-transparent">
         <Image
-            source={{ uri: user.avatar }}
-            className="w-full aspect-square mr-3 rounded-full"
-          />
+          source={{ uri: user.avatar }}
+          className="w-24 mr-3 rounded-full aspect-square "
+        />
       </View>
-      <Header avatar={user.avatar} name={user.name} level={user.level} xp={user.xp} />
-      <Text className="text-white text-xl mx-12 mt-2 mb-2">Orgs: {user.orgs}</Text>
-      <View className="flex-grow flex-row bg-transparent mt-6">
-        <View className="bg-transparent ml-6 mr-auto">
+
+      <Button
+        title="Send TX"
+        onPress={async () => {
+          try {
+            await createDonationTransaction({
+              senderAddress:
+                "erd1ju59m5rcrulg0h87ysed5acrz08xa4pkzts0hrzy2lau3ak3ne0sauhxgx",
+            });
+          } catch (e) {
+            console.log("Error", e);
+          }
+        }}
+        accessibilityLabel="Send TX"
+      />
+
+      <Header
+        avatar={user.avatar}
+        name={user.name}
+        level={user.level}
+        xp={user.xp}
+      />
+      <Text className="mx-12 mt-2 mb-2 text-xl text-white">
+        Orgs: {user.orgs}
+      </Text>
+      <View className="flex-row flex-grow mt-6 bg-transparent">
+        <View className="ml-6 mr-auto bg-transparent">
           <Button
             onPress={onPressInv}
             title="Inventory"
             accessibilityLabel="Inventory"
           />
         </View>
-        <View className="bg-transparent mr-6">
+        <View className="mr-6 bg-transparent">
           <Button
             onPress={onPressMarket}
             title="Market"

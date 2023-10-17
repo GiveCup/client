@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, View, Text } from "react-native";
-import supabase from "../../services/supabase"; // Adjust the path to where your Supabase client is initialized
-import { useAtom } from "jotai";
-import { orgsAtom } from "../../store/atoms";
+
 import OrganizationCard from "../../components/Organizations";
 import { groupBy } from "../../utils/groupBy";
 import CallToActionCard from "../../components/Cards/CallToActionCard";
 import useOrganizations from "../../hooks/useOrganizations";
 
-function MainScreen() {
+const Donate = () => {
   const { orgs, loading, error } = useOrganizations();
 
   if (loading) {
@@ -38,6 +36,6 @@ function MainScreen() {
       ))}
     </ScrollView>
   );
-}
+};
 
-export default MainScreen;
+export default Donate;
