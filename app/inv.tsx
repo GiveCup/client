@@ -3,10 +3,11 @@ import { useRouter } from "expo-router";
 import { Button, ScrollView, TouchableOpacity, View } from "react-native";
 import { Image, Text } from "react-native";
 import { groupBy } from "../utils/groupBy";
-import OrganizationCard from "../components/Organizations";
-import useOrganizations from "../hooks/useOrganizations";
 import useAllAccessories from "../hooks/useAllAccessories";
 import AccessoryCard from "../components/Accessories";
+import HistoryCard from "../components/History";
+import { orgsAtom } from "../store/atoms";
+import { useAtom } from "jotai";
 
 export default function Inventory() {
     const router = useRouter();
@@ -17,6 +18,21 @@ export default function Inventory() {
       xp: 150,
       orgs: 5,
     };
+    const [orgs, ] =useAtom(orgsAtom);
+    const historyList = [
+        {
+          id: "1",
+          date: "16/10/23",
+          value: "3",
+          org: orgs.orgs[0],
+        },
+        {
+          id: "2",
+          date: "18/10/23",
+          value: "1",
+          org: orgs.orgs[1],
+        },
+    ];
 
     const { accessories, loading, error } = useAllAccessories();
   
@@ -36,7 +52,7 @@ export default function Inventory() {
         router.back();
     };
     return (
-        <ScrollView className="flex-1 px-5 bg-[#02100E] py-9">
+        <ScrollView className="flex-1 px-5 bg-[#02100E] p-9">
             <TouchableOpacity onPress={handleArrowPress} className="pl-4">
                 <FontAwesome
                 size={24}
@@ -68,7 +84,16 @@ export default function Inventory() {
                 </ScrollView>
                 </View>
             ))}
-            {/* history */}
+            <View className="pb-12">
+                <Text className="text-xl font-semibold text-white ">
+                    History
+                </Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {historyList.map((historyItem: any) => (
+                    <HistoryCard key={historyItem.id} historyItemData={historyItem} />
+                    ))}
+                </ScrollView>
+            </View>
         </ScrollView>
     );
 }

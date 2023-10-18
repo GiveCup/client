@@ -52,6 +52,7 @@ export default function Marketplace() {
                 className="w-full mr-3 rounded-full aspect-square "
                 />
             </View>
+            <View className="pb-8">
             {Object.entries(groupedAccessories).map(([category, accessoriesList]: any) => (
                 <View key={category} className="mb-4">
                 <Text className="text-xl font-semibold text-white ">
@@ -64,6 +65,7 @@ export default function Marketplace() {
                 </ScrollView>
                 </View>
             ))}
+            </View>
         </ScrollView>
     );
 }
